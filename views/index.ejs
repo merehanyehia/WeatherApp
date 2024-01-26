@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Weather</title>
+</head>
+
+<body>
+    <div style="text-align: center; margin: auto; padding-bottom: 5px;">
+        <h1 style="color: palevioletred;">Weather App</h1>
+
+        <form action="/weather" method="get">
+            <input type="text" name="city" placeholder="Enter City Name" style="padding: 5px;" />
+            <button type="submit" style="background-color: palevioletred;padding: 5px; margin-left: 10px;"><span
+                    style="color: white; padding: 5px;">
+                    Get Weather
+                </span> </button>
+        </form>
+    </div>
+
+    <div style="color: white; font-weight: bold; width: 200px; text-align: center; margin: auto; margin-left: 500px;">
+        
+            <% if(weather) {%>
+                <div class="card" style="background-color:lightblue; height: 200px; width: 400px; padding-top: 10px;">
+                    <div style="display: block; align-items: center; justify-content: center;">
+                        <p style="vertical-align:middle;">
+                            <img width="25" height="25" style="padding-left: 10px;"
+                                src="https://img.icons8.com/ultraviolet/20/thermometer-automation.png"
+                                alt="thermometer-automation" />
+                            <%= weather.main.temp %>&deg;F
+                        </p>
+                        <p style="vertical-align: text-top; margin-left: 10px;">
+                            <img width="25" height="25" src="https://img.icons8.com/emoji/50/cloud-emoji.png" alt="cloud-emoji"/>
+                            <%= weather.weather[0].main %>
+                        </p>
+
+                        <p style="vertical-align: text-top; margin-left: 10px;">
+                            <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAAACXBIWXMAAAsTAAALEwEAmpwYAAAB6klEQVR4nN1VO0sDQRC+To0aRBsRRNAUKvi43UsMNtFOK9FGxReIQuy0EHzgK62FiI/buQuksPMn2ViJiMnuntpHZteTkAfmooI4MJDMzn7fzHxzd4bx741CPkRBjFMmk4TJPXT8rWLwEPoWuOm+9ClAEKlyrs9eemsGp0ycIJDJ+KJ1LbsTmft6dAqyxwK+pIhUTkCSwdPHRgp8HwEs4IlKedQVY7oTvhdoXHq+IkUcueDHEpl8vcmkhY5d+PHPTlwxFoBAbqjqr2W3D05BbBXMf8snwXHpUclkAAI9nsj5XZ2uUkaLBcZONDlqogUP0sEOXsLK8T+ClWyQKymexW/zDTrGd6omII5Y15dkT7kRESY2/RGZl0+Rj/ha9R3Yejuozaf8GAJi1eiFIhNbTH+1bSUWd2UrdbwTAvIwdp4NV8qL3WTDhPEjzMU7VROoLhw5r8XMTVTKscCb1NXn5oygZqafO7AyCvKgXHXRC6+NAD/EJzmaeWsPTKBImJhRWjjecvEZBb6iBLfFtFGrjaafm/VrALfkdcCPD9t8yH9F9F8+NdVMUAw2dCZalLA231X6uHzQ+AmzIDenxRSr6B/izxo/+dEhTGwXPGjb3/7YFJt1letUOw/i2EzzLuM3jII3gv4r4H/W3gEQj1pJ/u5LPwAAAABJRU5ErkJggg==">
+                            <%= weather.name%>
+                            <%= weather.sys.country%>
+
+                        </p>
+                    </div>
+                </div>
+                <% } else if(error) {%>
+                    <p class="error" style="color: red; text-align: center; margin-left: 100px; width: 300px;">
+                        <%= error %>
+                    </p>
+                    <% } %>
+    </div>
+</body>
+
+</html>
